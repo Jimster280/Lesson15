@@ -1,31 +1,40 @@
 'use strict'
 
-const DomElement = function () {
-  const selector = prompt("Какой вам нужен элемент?");
-  const hight = +prompt("Какова его высота?");
-  const width = +prompt("Какова его ширина?");
-  const bg = prompt("Какой цвет заднего фона?");
-  const fontSize = +prompt("Размер шрифта?");
-  const createElement = function() {
-    if (selector[0] === ".") {
+const selectorq = prompt("Какой вам нужен элемент?");
+const hightq = +prompt("Какова его высота?");
+const widthq = +prompt("Какова его ширина?");
+const bgq = prompt("Какой цвет заднего фона?");
+const fontSizeq = +prompt("Размер шрифта?");
+
+const DomElement = function (selectorq, hightq, widthq, bgq, fontSizeq) {
+  this.selector = selectorq;
+  this.hight = hightq;
+  this.width = widthq;
+  this.bg = bgq;
+  this.fontSize = fontSizeq;
+  this.createElement = function() {
+    if (this.selector[0] === ".") {
       let div = document.createElement("div");
-      let name = selector.substr(1);
+      let name = this.selector.substr(1);
       div.className = name;
       div.innerHTML = "<h1>Привет!</h1>";
-      div.style.cssText = "background: " + bg + ";" + "height: " + hight + "px;"+ "width: " + width + "px;" + "font-size: " + fontSize + "px";
+      div.style.cssText = "background: " + this.bg + ";" + "height: " + this.hight + "px;"+ "width: " + this.width + "px;" + "font-size: " + DomElement.fontSize + "px";
       document.body.append(div);
-    } else if (selector[0] === "#") {
+    } else if (this.selector[0] === "#") {
       let div = document.createElement("div");
-      let name = selector.substr(1);
+      let name = this.selector.substr(1);
       div.innerHTML = "<h1>Привет!</h1>";
-      div.style.cssText = "background: " + bg + ";height: " + hight + "px;"+ "width: " + width + "px;" + "font-size: " + fontSize + "px;";
+      div.style.cssText = "background: " + this.bg + ";height: " + this.hight + "px;"+ "width: " + this.width + "px;" + "font-size: " + this.fontSize + "px;";
       div.id = name;
        document.body.append(div);
     } else {
-      alert('должно начинаться с . или #')
+      alert('должно начинаться с . или #');
     }
-  };
-  createElement();
+  }
 };
 
 DomElement();
+
+const DomElement1 = new DomElement(selectorq, hightq, widthq, bgq, fontSizeq);
+
+DomElement1.createElement();
