@@ -6,12 +6,12 @@ const widthq = +prompt("Какова его ширина?");
 const bgq = prompt("Какой цвет заднего фона?");
 const fontSizeq = +prompt("Размер шрифта?");
 
-const DomElement = function (selectorq, hightq, widthq, bgq, fontSizeq) {
-  this.selector = selectorq;
-  this.hight = hightq;
-  this.width = widthq;
-  this.bg = bgq;
-  this.fontSize = fontSizeq;
+const DomElement = function (selector, hight, width, bg, fontSize) {
+  this.selector = selector;
+  this.hight = hight;
+  this.width = width;
+  this.bg = bg;
+  this.fontSize = fontSize;
   this.createElement = function() {
     if (this.selector[0] === ".") {
       let div = document.createElement("div");
@@ -31,10 +31,13 @@ const DomElement = function (selectorq, hightq, widthq, bgq, fontSizeq) {
       alert('должно начинаться с . или #');
     }
   }
+  this.createElement();
 };
 
-DomElement();
-
 const DomElement1 = new DomElement(selectorq, hightq, widthq, bgq, fontSizeq);
+const DomElement2 = new DomElement( '#gooo', 180, 160, 'blue', 14);
 
-DomElement1.createElement();
+
+DomElement1();
+DomElement2();
+
